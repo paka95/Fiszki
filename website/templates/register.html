@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+<!--  -->
+{% block title %} Register {% endblock %}
+<!--  -->
+{% block content %}
+<form class="formentry" method="POST" autocomplete="off">
+
+    <div class="greenthingytop"></div>
+    <div>
+        <input id="useremail" class="inputentry" name="email" type="email" placeholder=" "></input>
+        <label class="labelentry" for="useremail">Enter email address</label>
+    </div>
+    <div>
+        <input id="password" class="inputentry" name="password" type="password" placeholder=" "></input>
+        <label class="labelentry" for="password">Enter password</label>
+    </div>
+    <div>
+        <input id="passwordc" class="inputentry" name="confirmpassword" type="password" placeholder=" " />
+        <label style="top: 53%" class="labelentry" for="passwordc">Confirm password</label>
+    </div>
+    <div class="spacer"></div>
+    <button class="buttonentry" type="submit">Register</button>
+    <div class="playfont" style="font-size: 13px; margin-top: 10px;"><a href=login style="text-decoration: none;">Already registered</a></div>
+    <div class="greenthingybottom"></div>
+</form>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+<!--  -->
+
+{% block title %}Login{% endblock %}
+
+<!--  -->
+
+{% block rightnavbar %} <a href=register><button>Register</button></a>
+
+<div class="point_to_register reem-kufi_font">&#8593; No account yet? Click here to register!</div>
+
+{% endblock %}
+
+<!--  -->
+
+{% block content %}
+<form class="formentry" method="POST" autocomplete="off">
+    <div class="greenthingytop"></div>
+    <div>
+        <input id="useremail" class="inputentry" name="email" type="email" placeholder=" "></input>
+        <label class="labelentry" for="useremail">Enter email address</label>
+    </div>
+    <div>
+        <input id="password" class="inputentry" name="password" type="password" placeholder=" "></input>
+        <label class="labelentry" for="password">Enter password</label>
+    </div>
+    <div class="spacer"></div>
+    <button class="buttonentry">Login</button>
+    <div class="playfont" style="font-size: 13px; margin-top: 20px">I forgot my password</div>
+    <div class="greenthingybottom"></div>
+</form>
+{% endblock %}

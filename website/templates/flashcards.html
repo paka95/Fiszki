@@ -1,0 +1,95 @@
+{% extends "layout.html" %} 
+{% block title %}Flashcards{% endblock %} 
+{% block leftnavbar %} <a style="text-decoration:none; color:white" href="/sets">SETS</a> {% endblock %} 
+
+
+
+    {% block content %}
+    
+    {% for set in seth %}
+    <div class="playfont">{{set.name}}</div>
+    {% endfor %}
+    <div class="borderline"></div>
+    <div class="container">
+
+        {% for fla in flashc %}
+
+        <div style="width: 100%; display: flex;">
+          <div class="flashcard_list" style="width: 100%;">
+              <div style="display: flex; justify-content: space-around; text-align: center;">
+                  <div class="flashcard_content"><div id="scroll-text">{{fla.firstside}}</div></div>
+                  <div class="vline"></div>
+                  <div class="flashcard_content">{{fla.secondside}}</div>
+              </div>
+          </div>
+
+          <div style="padding-top: 10px; width:50px; margin-right:-50px; text-align: center;">
+            <div class="dropdown">
+              <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa-solid fa-pen"></i>
+              </a>
+            
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="/account">Modify flashcard</a>
+                <a class="dropdown-item" href="/delete-flashcard/{{fla.id}}">Delete</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        {% endfor %}
+
+        <div style="text-align:center">
+            <button type="button" class="flashcard_add" data-toggle="modal" data-target="#exampleModal">
+                Add flashcard
+            </button>
+        </div>
+        <div class="study_mode_button">
+            STUDY MODE
+        </div>
+        
+
+    </div>
+    <div class="borderline"></div>
+
+
+    <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" style="font-family: Play;" id="exampleModalLabel">Add new flashcard</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <form method="POST">
+
+        <div class="modal-body">
+            <div style="display: flex; justify-content: space-evenly;">
+                <input type="text" class="inmodalinput" name="firstside" id="firstside" placeholder="First side">
+                <input type="text" class="inmodalinput" name="secondside" id="secondside" placeholder="Second side">
+            </div>
+        </div>
+
+        <div style="text-align: center">
+          <button type="submit" class="add_new_button">Add flashcard</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    {% endblock %}

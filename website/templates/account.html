@@ -1,0 +1,27 @@
+{% extends "layout.html" %} {% block title %}Profile{% endblock %}
+{% block leftnavbar %} <a style="text-decoration:none; color:white" href="/home">HOME</a> {% endblock %} 
+{% block rightnavbar %}<a href="/logout" style="text-decoration:none; color:white">Logout</a>{% endblock %}
+
+{% block content %}
+
+<div class="borderline"></div>
+<div class="container">
+
+    <div style="height: 100px; display:flex;">
+        <img src="/static/user.png" alt="useravatar" width="100px" height="100px" style="left:0%"></img>
+        <div>
+            <div style="margin-left: 30px; margin-top: 35px; font-family: Play; color:#B6A2A2">Email address: <b>{{user.email}}</b></div>
+        </div>
+    </div>
+
+    <div style="height: 1px; width:100%; margin-top: 10px; background-color:#B6A2A2"></div>
+
+    <div class="setlist">
+        <div><a href="#" >Edit password</a></div>
+        <div style="height: 1px; width:100%; margin-top: 10px; margin-bottom: 10px; background-color:#B6A2A2"></div>
+        <div><a href="#" style="color: red">Delete account</a></div>
+    </div>
+
+</div>
+
+{% endblock %}
