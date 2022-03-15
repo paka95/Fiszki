@@ -56,17 +56,20 @@ def flashcards(setid):
             flash("Flashcard added!", category="success")
             return redirect(url_for("views.flashcards", setid=setid))
 
+        
     return render_template("flashcards.html", flashc=flashc, seth=seth)
+
+
 
 @views.route("/delete-flashcard/<id>")
 @login_required
 def delete_flashcard(id):
     flashcard = Flashcard.query.filter_by(id=id).first()
-
     db.session.delete(flashcard)
     db.session.commit()
     flash("Flashcard deleted", category='success')
     return redirect(url_for("views.flashcards", setid=flashcard.of_set))
+
 
 
 @views.route("/delete-set/<id>")
@@ -85,3 +88,44 @@ def delete_set(id):
 def account():
     user = User.query.filter_by(id=current_user.id).first()
     return render_template("account.html", user=user)
+
+
+@views.route("/test")
+@login_required
+def test():
+
+    return render_template("test.html")
+
+
+@views.route("/change-set-name/<id>", methods=['GET', 'POST'])
+@login_required
+def change_set_name(id):
+    seth = Set.query.filter_by(id=id).first()
+
+    if not seth:
+        flash("No set found", category='error')
+    else:
+        seth.name = request.form.get('updatesetname')
+        db.session.commit()
+        flash("Set name updated", category='success')
+    
+    
+    return redirect(url_for("views.sets"))
+
+
+@views.route("/change-flashcard-content/<id>", methods=['GET', 'POST'])
+@login_required
+def change_flashcard_content(id):
+    flashc = Flashcard.query.filter_by(id=id).first()
+
+    if not flashc:
+        flash("No set found", category='error')
+    else:
+        flashc.firstside = request.form.get('updatedfirstside')
+        flashc.secondside = request.form.get('updatedsecondside')
+        db.session.commit()
+        flash("Flashcard updated", category='success')
+    
+    
+    return redirect(url_for("views.sets"))
+
