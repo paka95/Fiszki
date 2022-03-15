@@ -125,7 +125,7 @@ def change_flashcard_content(id):
         flashc.secondside = request.form.get('updatedsecondside')
         db.session.commit()
         flash("Flashcard updated", category='success')
-    
+        return redirect(url_for("views.flashcards", setid=flashc.of_set))
     
     return redirect(url_for("views.sets"))
 
