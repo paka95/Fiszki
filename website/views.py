@@ -61,7 +61,7 @@ def flashcards(setid):
 
 
 
-@views.route("/delete-flashcard/<id>")
+@views.route("/delete-flashcard/<id>", methods=['GET', 'POST'])
 @login_required
 def delete_flashcard(id):
     flashcard = Flashcard.query.filter_by(id=id).first()
@@ -121,11 +121,33 @@ def change_flashcard_content(id):
     if not flashc:
         flash("No set found", category='error')
     else:
-        flashc.firstside = request.form.get('updatedfirstside')
-        flashc.secondside = request.form.get('updatedsecondside')
+        first = request.form.get('updatedfirstside')
+        second = request.form.get('updatedsecondside')
+        if first:
+            flashc.firstside = first
+            flash("Flashcard updated", category='success')
+        elif second:
+            flashc.secondside = second
+            flash("Flashcard updated", category='success')
+        else:
+            flash("Nothing updated", category='error')
         db.session.commit()
-        flash("Flashcard updated", category='success')
         return redirect(url_for("views.flashcards", setid=flashc.of_set))
     
     return redirect(url_for("views.sets"))
 
+
+
+
+# @views.route("/deletemultiple", methods=['GET', 'POST'])
+# @login_required
+# def deletemultiple():
+#     if request.method == 'POST':
+#         for fla in request.form.getlist('mycheckbox'):
+#             print(fla)
+#             seth = Set.query.filter_by(id=id).first()
+
+#         db.session.delete(seth)
+#         db.session.commit()
+#         flash("Set deleted", category='success')
+#     return redirect(url_for("views.sets"))
