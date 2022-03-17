@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for,
 from flask_login import login_required, current_user
 from .models import User, Set, Flashcard
 from . import db
+from sqlalchemy import desc
 
 views = Blueprint("views", __name__)
 
@@ -16,8 +17,7 @@ def home():
 @views.route("/sets", methods=['GET', 'POST'])
 @login_required
 def sets():
-    user = User.query.filter_by(id=current_user.id).first()
-    seth = user.sets
+    seth = Set.query.filter_by(author=current_user.id).order_by(desc(Set.date_created)).all()
 
     if request.method == 'POST':
         set_name = request.form.get('setname')
@@ -38,7 +38,7 @@ def sets():
 @views.route("/flashcards/<setid>", methods=['GET', 'POST'])
 @login_required
 def flashcards(setid):
-    flashc = Flashcard.query.filter_by(of_set=setid).all()
+    flashc = Flashcard.query.filter_by(of_set=setid).order_by(desc(Flashcard.date_created)).all()
     seth = Set.query.filter_by(id=setid).all()
 
     if request.method == 'POST':
@@ -72,7 +72,7 @@ def delete_flashcard(id):
 
 
 
-@views.route("/delete-set/<id>")
+@views.route("/delete-set/<id>", methods=['GET', 'POST'])
 @login_required
 def delete_set(id):
     seth = Set.query.filter_by(id=id).first()
@@ -123,12 +123,16 @@ def change_flashcard_content(id):
     else:
         first = request.form.get('updatedfirstside')
         second = request.form.get('updatedsecondside')
-        if first:
+        if first and second:
             flashc.firstside = first
-            flash("Flashcard updated", category='success')
+            flashc.secondside = second
+            flash("Whole flashcard updated", category='success')
         elif second:
             flashc.secondside = second
-            flash("Flashcard updated", category='success')
+            flash("Updated second side of a flashcard", category='success')
+        elif first:
+            flashc.firstside = first
+            flash("Updated first side of a flashcard", category='success')
         else:
             flash("Nothing updated", category='error')
         db.session.commit()
@@ -151,3 +155,5 @@ def change_flashcard_content(id):
 #         db.session.commit()
 #         flash("Set deleted", category='success')
 #     return redirect(url_for("views.sets"))
+
+
