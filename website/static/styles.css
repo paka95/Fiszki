@@ -221,35 +221,15 @@ nav button:hover {
     left: -10px;
 }
 
-.error{
-    background-color: red;
-    color: white;
-    border-radius: 5px;
+/* .alert { zeby msg nie przesuwalo innych divow to musi on miec absolute, a parent relative, ale teraz juz za pozno zeby to przestawiac, cos zjebalem
     position: absolute;
-    margin-top: -50px;
-    padding: 5px;
-    text-align: center;
-    width: 300px;
-    height: 30px
-}
-
-.success{
-    background-color: green;
-    color: white;
-    border-radius: 5px;
-    padding: 5px;
-    text-align: center;
-    width: 300px;
-    height: 30px;
-}
+} */
 
 .container {
 
     height: 500px;
     width: 1180px;
     border-radius: 10px;
-    /* overflow-x: hidden;
-    overflow-y: auto; */
 }
 
 .borderline {
@@ -283,6 +263,7 @@ nav button:hover {
 
 .flashcard_list:hover {
     background-color: rgb(206, 235, 209);
+    box-shadow: 0px 0px 5px 1px #888888;
 }
 
 .flashcard_list:focus {
@@ -303,26 +284,37 @@ nav button:hover {
     padding: 10px;
     font-family: Play;
     text-align: center;
-    width: 100%
+    width: 100%;
+    border: none
 }
 
 .study_mode_button {
     background-color: #3A26B0;
     color: white;
     border-radius: 5px;
-    margin-bottom: 5px;
+    margin-top: 5px;
     padding: 10px;
     font-family: Play;
     text-align: center;
+    width: 100%;
     letter-spacing: 5px;
+    border: none;
+    display: block;
 }
 
+a:hover, a:focus, a:link, a:active {
+    text-decoration: none;
+    color: white;
+}
 
 .inmodalinput {
     border-radius: 5px;
     margin-bottom: 5px;
     padding: 10px;
     font-family: Play;
+    /* width: 300px; 
+    height: 100px;
+    word-wrap: break-word;*/
 }
 
 .add_new_set {
@@ -341,6 +333,7 @@ nav button:hover {
     padding: 10px;
     font-family: Play;
     text-align: center;
+    border: none;
 }
 
 .delete_button {
@@ -351,7 +344,8 @@ nav button:hover {
     font-family: Play;
     text-align: center;
     text-decoration: none;
-    color: white
+    color: white;
+    border: none
 }
 
 .delete_button:hover {
@@ -362,13 +356,9 @@ nav button:hover {
 .flashcard_content {
     width: 40%;
     overflow: hidden; 
-    /* text-overflow: ellipsis; */
+    /* background-color: pink; */
+    text-overflow: ellipsis;
 }
-
-@keyframes move {
-    from { margin-right: 0px; }
-    to { margin-right: 100px; }
-  }
 
   .fa-pen {
       color: green
@@ -381,12 +371,12 @@ nav button:hover {
   
   #scroll-text {
      /* animation properties  */
-    -moz-transform: translateX(100%);
-    -webkit-transform: translateX(100%);
+    /* -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%); */
     transform: translateX(100%);
     
-    -moz-animation: my-animation 15s linear infinite;
-    -webkit-animation: my-animation 15s linear infinite;
+    /* -moz-animation: my-animation 15s linear infinite;
+    -webkit-animation: my-animation 15s linear infinite; */
     animation: my-animation 5s linear infinite;
   }
   
@@ -404,13 +394,13 @@ nav button:hover {
   
   @keyframes my-animation {
     from {
-      -moz-transform: translateX(100%);
-      -webkit-transform: translateX(100%);
+      /* -moz-transform: translateX(100%);
+      -webkit-transform: translateX(100%); */
       transform: translateX(100%);
     }
     to {
-      -moz-transform: translateX(-100%);
-      -webkit-transform: translateX(-100%);
+      /* -moz-transform: translateX(-100%);
+      -webkit-transform: translateX(-100%); */
       transform: translateX(-100%);
     }}
 
@@ -446,4 +436,104 @@ background: green;
 
 
 
+/* ========================================= */
 
+
+  .marquee {
+    width: 300px;
+    line-height: 100px;
+	background-color: Pink;
+	color: Black;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.marquee p {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 5s linear infinite;
+}
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+
+/* ====================================== */
+
+
+/* =====================WEŹ TO SOBIE ROZPRACUJ I PRZYSWÓJ==================== */
+
+.wrapper {
+    max-width: 100vw;
+    overflow: hidden;
+    text-align: center;
+  }
+  
+  .carousel {
+    display: flex;
+    justify-content: flex-start;
+    transition: 1s;
+  }
+  
+  .card {
+    max-width: 400px;
+    width: 300px;
+    border: 1px solid #ccc;
+    padding: 100px;
+    margin: 60px auto;
+    position: relative;
+    transition: 1s ease-out;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .back {
+    transform: rotateX(180deg);
+  }
+  
+  .card div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    transition: 2s;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #fafafa;
+  }
+  
+  .active {
+    transform: rotateX(180deg);
+  }
+  .prev,
+  .next {
+    width: 100px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 10px;
+    margin: 30px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    color: #222;
+    background-color: #eee;
+    font-size: 14px;
+    font-weight: bold;
+    transition: .2s;
+  }
+  
+  .prev:hover, .next:hover{
+    background-color: #ccc;
+    border-color: #ccc;
+  }
+
+/* ======================================= */

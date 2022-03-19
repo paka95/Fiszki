@@ -7,14 +7,17 @@ from sqlalchemy import desc
 
 views = Blueprint("views", __name__)
 
-@views.route("/home")
-@views.route("/")
+@views.route("/study/<id>")
 @login_required
-def home():
-    return render_template("home.html")
+def study(id):
+    seth = Set.query.filter_by(id=id).first()
+    flashc = Flashcard.query.filter_by(of_set=id).all()
+
+    return render_template("study.html", seth = seth, flashc = flashc)
 
 
 @views.route("/sets", methods=['GET', 'POST'])
+@views.route("/")
 @login_required
 def sets():
     seth = Set.query.filter_by(author=current_user.id).order_by(desc(Set.date_created)).all()
@@ -23,7 +26,7 @@ def sets():
         set_name = request.form.get('setname')
 
         if not set_name:
-            flash("Can't be empty", category="error")
+            flash("Can't be empty", category="danger")
         else:
             new_set = Set(name=set_name, user=current_user)
             db.session.add(new_set)
@@ -46,9 +49,9 @@ def flashcards(setid):
         secondside = request.form.get('secondside')
 
         if not firstside:
-            flash("Can't be empty fir", category="error")
+            flash("Can't be empty fir", category="danger")
         elif not secondside:
-            flash("Can't be empty sec", category="error")
+            flash("Can't be empty sec", category="danger")
         else:
             new_flashcard = Flashcard(firstside=firstside, secondside=secondside, of_set=setid)
             db.session.add(new_flashcard)
@@ -67,7 +70,7 @@ def delete_flashcard(id):
     flashcard = Flashcard.query.filter_by(id=id).first()
     db.session.delete(flashcard)
     db.session.commit()
-    flash("Flashcard deleted", category='success')
+    flash("Flashcard deleted", category='info')
     return redirect(url_for("views.flashcards", setid=flashcard.of_set))
 
 
@@ -79,7 +82,7 @@ def delete_set(id):
 
     db.session.delete(seth)
     db.session.commit()
-    flash("Set deleted", category='success')
+    flash("Set deleted", category='info')
     return redirect(url_for("views.sets"))
 
 
@@ -103,11 +106,11 @@ def change_set_name(id):
     seth = Set.query.filter_by(id=id).first()
 
     if not seth:
-        flash("No set found", category='error')
+        flash("No set found", category='danger')
     else:
         seth.name = request.form.get('updatesetname')
         db.session.commit()
-        flash("Set name updated", category='success')
+        flash("Set name updated", category='info')
     
     
     return redirect(url_for("views.sets"))
@@ -119,7 +122,7 @@ def change_flashcard_content(id):
     flashc = Flashcard.query.filter_by(id=id).first()
 
     if not flashc:
-        flash("No set found", category='error')
+        flash("No set found", category='danger')
     else:
         first = request.form.get('updatedfirstside')
         second = request.form.get('updatedsecondside')
@@ -134,7 +137,7 @@ def change_flashcard_content(id):
             flashc.firstside = first
             flash("Updated first side of a flashcard", category='success')
         else:
-            flash("Nothing updated", category='error')
+            flash("Nothing updated", category='danger')
         db.session.commit()
         return redirect(url_for("views.flashcards", setid=flashc.of_set))
     

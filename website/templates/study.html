@@ -1,0 +1,78 @@
+{% extends "layout.html" %} 
+{% block title %}Home{% endblock %}
+{% block leftnavbar %} <a style="text-decoration:none; color:white" href="/sets">SETS</a> {% endblock %} 
+{% block content %}
+
+    <div style="text-align:center; background-color: green; font-weight: bold; width: 20%; margin: 0 auto; border-radius: 5px; font-size: 30px; color:white">{{seth.name}}</div>
+
+
+    <div class="wrapper">
+        <div class="carousel"></div>
+        <button class="prev">Prev</button>
+        <button class="next">Next</button>
+    </div>
+
+
+    <script type="text/javascript">
+
+        
+let cards = [
+        {% for fla in flashc %}
+        {
+            front: "{{fla.firstside}}",
+            back: "{{fla.secondside}}"
+        },
+        {% endfor %}
+        ];
+
+
+let currentCard = 1,
+  carousel = document.querySelector(".carousel"),
+  next = document.querySelector(".next"),
+  prev = document.querySelector(".prev");
+
+renderCards();
+
+function renderCards() {
+  carousel.style.width = `${cards.length}00vw`;
+  cards.map(el => {
+    let div = document.createElement("div");
+    div.classList.add("card");
+    let front = document.createElement("div");
+    front.classList.add("front");
+    let back = document.createElement("div");
+    back.classList.add("back");
+    front.textContent = el.front;
+    back.textContent = el.back;
+    div.appendChild(front);
+    div.appendChild(back);
+    div.addEventListener("click", function(e) {
+      e.srcElement.parentNode.classList.toggle("active");
+    });
+    carousel.appendChild(div);
+  });
+}
+
+next.addEventListener("click", function(e) {
+  if (currentCard >= cards.length) {
+    return;
+  }
+  currentCard++;
+  cardFly();
+});
+
+prev.addEventListener("click", function(e) {
+  if (currentCard - 1 <= 0) {
+    return;
+  }
+  currentCard--;
+  cardFly();
+});
+
+function cardFly() {
+  carousel.style.transform = `translateX(-${currentCard - 1}00vw)`;
+}
+    </script>
+
+
+{% endblock %}

@@ -19,7 +19,7 @@ def login():
             if check_password_hash(user.password, password):
                 flash(f"Logged in {user.id}", category='success')
                 login_user(user, remember=True)
-                return redirect(url_for("views.home"))
+                return redirect(url_for("views.sets"))
             else:
                 flash("Wrong password", category="error")
         else:
