@@ -96,7 +96,6 @@ def account():
 @views.route("/test")
 @login_required
 def test():
-
     return render_template("test.html")
 
 
