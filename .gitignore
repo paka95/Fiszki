@@ -2,3 +2,4 @@ env
 .env
 test.html
 new.html
+__pycache__
