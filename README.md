@@ -22,3 +22,8 @@ After installation you will be able to use it at localhost:5000 or 127.0.0.1:500
 * Deleting flashcards
 * Updating flashcards
 * Activating study mode - where you can swipe cards, turn them
+
+## Project overview
+
+https://user-images.githubusercontent.com/94203043/171157062-17790a0f-c4ce-4d7f-bb8e-d79a98284abb.mp4
+
