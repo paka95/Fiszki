@@ -51,5 +51,10 @@ Manipulating flashcards:
 https://user-images.githubusercontent.com/94203043/171164626-7ad5bf15-2a96-4f07-8dc0-c2f9abf77df6.mp4
 
 
+Study mode:
+
+https://user-images.githubusercontent.com/94203043/171165641-88797bcd-9072-46ac-8564-b5ee5c2ecd7a.mp4
+
+
 
 
