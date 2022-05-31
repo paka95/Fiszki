@@ -12,3 +12,12 @@ In order to run this project, simply clone the repository, then in console run:
 $ pip install -r requirements.txt
 $ python application.py
 ```
+After installation you will be able to use it at localhost:5000 or 127.0.0.1:5000
+
+## Features
+* Adding new sets
+* Deleting sets
+* Adding new flashcards
+* Deleting flashcards
+* Updating flashcards
+* Activating study mode - where you can swipe cards, turn them
