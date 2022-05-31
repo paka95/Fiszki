@@ -56,5 +56,10 @@ Study mode:
 https://user-images.githubusercontent.com/94203043/171165641-88797bcd-9072-46ac-8564-b5ee5c2ecd7a.mp4
 
 
+Trying to access set view while logged out:
+
+https://user-images.githubusercontent.com/94203043/171165971-e188c235-8511-4e8d-9fa5-dff8538e2d3d.mp4
+
+
 
 
