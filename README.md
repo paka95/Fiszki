@@ -58,7 +58,9 @@ https://user-images.githubusercontent.com/94203043/171165641-88797bcd-9072-46ac-
 
 Trying to access set view while logged out:
 
-https://user-images.githubusercontent.com/94203043/171165971-e188c235-8511-4e8d-9fa5-dff8538e2d3d.mp4
+https://user-images.githubusercontent.com/94203043/171167132-1214a729-3a40-427c-91f1-211c348214a3.mp4
+
+
 
 
 
