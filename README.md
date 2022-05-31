@@ -1,2 +1,2 @@
 # Fiszki
-## - app that helps you learn words in a foreign language
+## app that helps you learn words in a foreign language
