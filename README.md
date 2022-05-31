@@ -8,7 +8,7 @@ If you are in need of learning new words in a foreign language and looking for a
 
 ## Setup
 In order to run this project, simply clone the repository, then in console run:
-``
+```
 $ pip install -r requirements.txt
 $ python application.py
-``
+```
