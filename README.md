@@ -31,6 +31,9 @@ https://user-images.githubusercontent.com/94203043/171162650-687cb117-4276-455a-
 
 
 Home page:
+https://user-images.githubusercontent.com/94203043/171163524-15264262-379f-47be-adc4-2fd19f3149cc.mp4
+
+
 
 
 Set view:
