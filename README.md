@@ -25,5 +25,14 @@ After installation you will be able to use it at localhost:5000 or 127.0.0.1:500
 
 ## Project overview
 
+Logging view:
 https://user-images.githubusercontent.com/94203043/171157062-17790a0f-c4ce-4d7f-bb8e-d79a98284abb.mp4
+
+Home page:
+https://user-images.githubusercontent.com/94203043/171157898-2bfe250c-d43c-424d-9ee2-caaa3fd9e086.mp4
+
+Set view:
+https://user-images.githubusercontent.com/94203043/171158980-a10a5b2a-ba2c-4aa6-8852-eab4594be1da.mp4
+
+
 
