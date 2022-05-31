@@ -25,7 +25,7 @@ After installation you will be able to use it at localhost:5000 or 127.0.0.1:500
 
 ## Project overview
 
-Logging view:
+Logging view (with error handling):
 
 https://user-images.githubusercontent.com/94203043/171162650-687cb117-4276-455a-afba-2ce28263329a.mp4
 
@@ -43,7 +43,12 @@ Set view:
 
 https://user-images.githubusercontent.com/94203043/171164168-6a651abb-6e69-4239-b135-eb665e77122b.mp4
 
+
+
  
+Manipulating flashcards:
+
+https://user-images.githubusercontent.com/94203043/171164626-7ad5bf15-2a96-4f07-8dc0-c2f9abf77df6.mp4
 
 
 
