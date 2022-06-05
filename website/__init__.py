@@ -10,7 +10,7 @@ DB_NAME = "database.db"
 
 def create_app():
     application = Flask(__name__)
-    application.config['SECRET_KEY'] = "secret"
+    application.config['SECRET_KEY'] = "secret" # in real projects it is unacceptable to display secret key and database credentials
     application.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:paka@localhost/fiszki'
     db.init_app(application)
 
